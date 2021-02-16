@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatGridList } from '@angular/material/grid-list';
 
-export interface Characters {
+export interface Character {
   id: number;
   name: string;
   category: string;
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     xs: 1
   };
 
-  characters: Characters[] = [
+  characters: Character[] = [
     {
       id: 1,
       name: 'Anakin Skywalker',
@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void  {
-
+    localStorage.setItem('characters', JSON.stringify(this.characters))
   }
 
   logout(): void {}
