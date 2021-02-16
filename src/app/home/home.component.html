@@ -6,19 +6,37 @@
   <button mat-icon-button (click)="navigateProfile()">
     <mat-icon>person</mat-icon>
   </button>
-  <button mat-icon-button (click)="logout()")>
+  <button mat-icon-button (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
 
-<mat-grid-list  cols="4" style="margin: 5%;">
-  <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-    <mat-card style="width: 100%; height: 100%;">
-      <mat-card-title>{{tile.text}}</mat-card-title>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="container-fluid px-4" style="margin-top: 5%;">
+  <div class="row gy-5">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-primary me-md-2" style="margin-bottom: 5px;" type="button">Crear</button>
+    </div>
+  </div>
+  <div class="row gy-5">
+    <div class="col" *ngFor="let character of characters">
+      <mat-card
+        style="width: 100%; height: 100%"
+      >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ character.name }}</mat-card-title>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          alt="Photo of a Shiba Inu"
+        />
+        <mat-card-content>
+          <p>
+            {{ character.description }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
