@@ -1,4 +1,5 @@
-import { HomeComponent } from './home/home.component';
+import { RecoverPasswordComponent } from './recover-password/recover-password.component';
+import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,6 +13,14 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'recovery',
+    component: RecoverPasswordComponent
   },
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
 ];
