@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="navbar">
+<mat-toolbar class="navbar">
   <div text-wrap>Star Wars</div>
   <button mat-icon-button (click)="navigateHome()">
     <mat-icon>home</mat-icon>
@@ -36,6 +36,9 @@
             {{ character.description }}
           </p>
         </mat-card-content>
+        <mat-card-actions>
+          <button (click)="goDetail(character)" mat-button><mat-icon>visibility</mat-icon></button>
+        </mat-card-actions>
       </mat-card>
     </div>
   </div>

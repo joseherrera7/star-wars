@@ -9,9 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { CreateComponent } from './create/create.component';
-import { DeleteComponent } from './delete/delete.component';
 import { DetailComponent } from './detail/detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModifyComponent } from './modify/modify.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     RecoverPasswordComponent,
     CreateComponent,
-    DeleteComponent,
     DetailComponent,
+    ModifyComponent,
   ],
   imports: [
     BrowserModule,

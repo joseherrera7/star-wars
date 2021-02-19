@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatGridList } from '@angular/material/grid-list';
+import { NavigationExtras, Router } from '@angular/router';
 
 export interface Character {
   id: number;
@@ -77,15 +78,28 @@ export class HomeComponent implements OnInit {
   ];
   breakpoint: number;
 
-  constructor() {}
+  constructor(public router: Router) {}
 
   ngOnInit(): void  {
-    localStorage.setItem('characters', JSON.stringify(this.characters))
+    localStorage.setItem('characters', JSON.stringify(this.characters));
   }
 
-  logout(): void {}
+  logout(): void {
+    this.router.navigate(['login']);
+  }
 
-  navigateHome(): void {}
+  navigateHome(): void {
+    this.router.navigate(['home']);
+  }
 
   navigateProfile(): void {}
+
+  goDetail(character): void {
+    const navext: NavigationExtras = {
+      state: {
+        character
+      },
+    };
+    this.router.navigate(['home/detail'], navext);
+  }
 }

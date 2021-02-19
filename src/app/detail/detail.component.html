@@ -1,1 +1,57 @@
-<p>detail works!</p>
+<mat-toolbar class="navbar">
+  <div text-wrap>Star Wars</div>
+  <button mat-icon-button (click)="navigateHome()">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button mat-icon-button (click)="navigateProfile()">
+    <mat-icon>person</mat-icon>
+  </button>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container-fluid px-5" >
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Nombre</mat-card-title>
+      <mat-card-subtitle>Descripcion</mat-card-subtitle>
+    </mat-card-header>
+    <div class="text-center">
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    </div>
+    <mat-card-actions class="text-right">
+      <button mat-button><mat-icon>mode_edit</mat-icon>
+
+        </button>
+      <button mat-button><mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
+    <mat-card-content>
+      <div class="row ">
+        <div class="col">
+          Categoria
+        </div>
+        <div class="col">
+          Habilidades
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col">
+          Color sable
+        </div>
+        <div class="col">
+          Especie
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          Género
+        </div>
+        <div class="col">
+          Dimensiones
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

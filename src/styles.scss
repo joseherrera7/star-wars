@@ -34,3 +34,15 @@ $candy-app-theme: mat-dark-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($candy-app-theme);
+
+mat-icon {
+  color: #007bff !important;
+}
+
+mat-card {
+  background: #212121 !important;
+}
+
+.card-body {
+  background: #212121 !important;
+}

@@ -1,3 +1,4 @@
+import { DetailComponent } from './../detail/detail.component';
 import { CreateComponent } from './../create/create.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,8 +11,9 @@ const routes: Routes = [
     component: CreateComponent,
   },
   {
-
-  }
+    path: 'detail',
+    component: DetailComponent,
+  },
 ];
 
 @NgModule({
