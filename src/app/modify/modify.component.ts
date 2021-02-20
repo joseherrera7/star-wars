@@ -29,10 +29,10 @@ export class ModifyComponent implements OnInit {
 
   }
 
-  logout(): void {}
+  logout(): void { }
 
-  navigateHome(): void {}
+  navigateHome(): void { }
 
-  navigateProfile(): void {}
+  navigateProfile(): void { }
 
 }

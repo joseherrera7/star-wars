@@ -78,9 +78,9 @@ export class HomeComponent implements OnInit {
   ];
   breakpoint: number;
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) { }
 
-  ngOnInit(): void  {
+  ngOnInit(): void {
     localStorage.setItem('characters', JSON.stringify(this.characters));
   }
 
@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
-  navigateProfile(): void {}
+  navigateProfile(): void { }
 
   goDetail(character): void {
     const navext: NavigationExtras = {
