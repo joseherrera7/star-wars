@@ -12,6 +12,7 @@ export interface Character {
   height: number;
   weight: number;
   description: string;
+  img: string;
 }
 
 @Component({
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit {
       height: 170,
       weight: 165,
       description: 'A great warrior, but sensitive to the dark side...',
+      img: 'https://raw.githubusercontent.com/joseherrera7/star-wars/master/src/assets/images/anakin-skywalker.jpg',
     },
     {
       id: 2,
@@ -52,6 +54,7 @@ export class HomeComponent implements OnInit {
       height: 165,
       weight: 170,
       description: 'Master in defense, no blaster can hit him.',
+      img: 'https://raw.githubusercontent.com/joseherrera7/star-wars/master/src/assets/images/obi-wan.jpg',
     },
     {
       id: 3,
@@ -63,6 +66,7 @@ export class HomeComponent implements OnInit {
       height: 190,
       weight: 200,
       description: 'Extremely powerful sith, no heart, just power...',
+      img: 'https://raw.githubusercontent.com/joseherrera7/star-wars/master/src/assets/images/darth-vader.jpg',
     },
     {
       id: 4,
@@ -74,6 +78,7 @@ export class HomeComponent implements OnInit {
       height: 60,
       weight: 50,
       description: 'Wise and powerful, very little green guy...',
+      img: 'https://raw.githubusercontent.com/joseherrera7/star-wars/master/src/assets/images/yoda.jpg',
     },
   ];
   breakpoint: number;
