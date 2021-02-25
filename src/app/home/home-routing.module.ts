@@ -1,3 +1,4 @@
+import { ModifyComponent } from './../modify/modify.component';
 import { DetailComponent } from './../detail/detail.component';
 import { CreateComponent } from './../create/create.component';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,10 @@ const routes: Routes = [
     path: 'detail',
     component: DetailComponent,
   },
+  {
+    path: 'modify',
+    component: ModifyComponent,
+  }
 ];
 
 @NgModule({

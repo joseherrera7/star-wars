@@ -1,5 +1,5 @@
 <mat-toolbar class="navbar">
-  <div text-wrap>Star Wars</div>
+  <div text-wrap>Star Wars Cards</div>
   <button mat-icon-button (click)="navigateHome()">
     <mat-icon>home</mat-icon>
   </button>
@@ -11,37 +11,58 @@
   </button>
 </mat-toolbar>
 
-<div class="container-fluid px-4" style="margin-top: 5%;">
+<div class="container-fluid md-5 px-4 py-5">
   <div class="row gy-5">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button [routerLink]="['/home/create']" routerLinkActive="router-link-active"  class="btn btn-primary me-md-2" style="margin-bottom: 5px;" type="button">Crear</button>
+      <button
+        [routerLink]="['/home/create']"
+        routerLinkActive="router-link-active"
+        class="btn btn-primary me-md-2"
+        style="margin-bottom: 5px"
+        type="button"
+      >
+        Create
+      </button>
     </div>
   </div>
   <div class="row gy-5">
-    <div class="col" *ngFor="let character of characters">
-      <mat-card
-        style="width: 100%; height: 100%"
-      >
+    <div class="col-md-6" *ngFor="let character of characters">
+      <mat-card style="width: 100%; height: 100%">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"><img
+          <div mat-card-avatar class="example-header-image">
+            <img
+              *ngIf="character.category === 'Jedi'"
+              mat-card-image
+              src="https://raw.githubusercontent.com/joseherrera7/star-wars/master/src/assets/images/jedi-logo.png"
+              class="px-2 py-2"
+              alt="Logo"
+            />
+            <img
+              *ngIf="character.category === 'Sith'"
+              mat-card-image
+              src="https://raw.githubusercontent.com/joseherrera7/star-wars/master/src/assets/images/sith-logo.png"
+              class="px-2 py-2"
+              alt="Logo"
+            />
+          </div>
+          <mat-card-title class="px-2">{{ character.name }}</mat-card-title>
+          <mat-card-subtitle class="px-2">{{
+            character.description
+          }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <div class="text-center py-4">
+          <img
             mat-card-image
             [src]="character.img"
-            alt="Photo of a Shiba Inu"
-          /></div>
-          <mat-card-title>{{ character.name }}</mat-card-title>
-        </mat-card-header>
-        <img
-          mat-card-image
-          [src]="character.img"
-          alt="Photo of a Shiba Inu"
-        />
-        <mat-card-content>
-          <p>
-            {{ character.description }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button (click)="goDetail(character)" mat-button><mat-icon>visibility</mat-icon></button>
+            class="cropped img-fluid"
+            alt="imagen caracter"
+          />
+        </div>
+        <mat-card-actions style="bottom: 0">
+          <button (click)="goDetail(character)" mat-button>
+            <mat-icon>visibility</mat-icon>
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

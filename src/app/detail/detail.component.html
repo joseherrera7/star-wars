@@ -1,5 +1,5 @@
 <mat-toolbar class="navbar">
-  <div text-wrap>Star Wars</div>
+  <div text-wrap>Star Wars Cards</div>
   <button mat-icon-button (click)="navigateHome()">
     <mat-icon>home</mat-icon>
   </button>
@@ -11,46 +11,54 @@
   </button>
 </mat-toolbar>
 
-<div class="container-fluid px-5" >
+<div class="container-fluid px-5">
   <mat-card>
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{character.name}}</mat-card-title>
-      <mat-card-subtitle>{{character.description}}</mat-card-subtitle>
+      <div mat-card-avatar class="example-header-image">
+        <img
+          *ngIf="character.category === 'Jedi'"
+          mat-card-image
+          src="https://raw.githubusercontent.com/joseherrera7/star-wars/master/src/assets/images/jedi-logo.png"
+          class="px-2 py-2"
+          alt="Logo"
+        />
+        <img
+          *ngIf="character.category === 'Sith'"
+          mat-card-image
+          src="https://raw.githubusercontent.com/joseherrera7/star-wars/master/src/assets/images/sith-logo.png"
+          class="px-2 py-2"
+          alt="Logo"
+        />
+      </div>
+      <mat-card-title class="px-2">{{ character.name }}</mat-card-title>
+      <mat-card-subtitle class="px-2">{{
+        character.description
+      }}</mat-card-subtitle>
     </mat-card-header>
     <div class="text-center">
-      <img mat-card-image [src]="character.img" alt="Photo of a Shiba Inu">
+      <img
+        class="cropped img-fluid"
+        mat-card-image
+        [src]="character.img"
+        alt="image character"
+      />
     </div>
     <mat-card-actions class="text-right">
-      <button mat-button><mat-icon>mode_edit</mat-icon>
-
-        </button>
-      <button mat-button><mat-icon>delete</mat-icon></button>
+      <button mat-button (click)="goEdit(character)"><mat-icon>mode_edit</mat-icon></button>
+      <button mat-button (click)="deleteItem()"><mat-icon>delete</mat-icon></button>
     </mat-card-actions>
     <mat-card-content>
-      <div class="row ">
-        <div class="col">
-          Categoria: {{character.category}}
-        </div>
-        <div class="col">
-         Color de sable: {{character.lightsaberColor}}
-        </div>
-      </div>
-      <div class="row ">
-        <div class="col">
-          Especie: {{character.species}}
-        </div>
-        <div class="col">
-          Género: {{character.gender}}
-        </div>
+      <div class="row">
+        <div class="col">Category: {{ character.category }}</div>
+        <div class="col">Lightsaber Color: {{ character.lightsaberColor }}</div>
       </div>
       <div class="row">
-        <div class="col">
-          Peso: {{character.weight}} lbs
-        </div>
-        <div class="col">
-          Altura: {{character.height}} cm
-        </div>
+        <div class="col">Species: {{ character.species }}</div>
+        <div class="col">Gender: {{ character.gender }}</div>
+      </div>
+      <div class="row">
+        <div class="col">Weight: {{ character.weight }} pounds</div>
+        <div class="col">Height: {{ character.height }} cms</div>
       </div>
     </mat-card-content>
   </mat-card>
