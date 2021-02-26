@@ -19,20 +19,21 @@
     <div class="col-12">
       <div class="card bg-secondary">
         <div class="card-body">
-          <form [formGroup]="characterForm" (ngSubmit)="create()">
-            <h1 class="card-title">Create</h1>
+          <form [formGroup]="characterForm" (ngSubmit)="save()">
+            <h1 *ngIf="!itsModify" class="card-title">Create</h1>
+            <h1 *ngIf="itsModify" class="card-title">Modify</h1>
             <div class="form-group">
               <h5 class="card-title">Name</h5>
               <mat-form-field appearance="fill">
                 <mat-label>Name</mat-label>
-                <input required matInput formControlName="name" />
+                <input [(ngModel)]="character.name" required matInput formControlName="name" />
               </mat-form-field>
             </div>
             <div class="form-group">
               <h5 class="card-title">Category</h5>
               <mat-form-field appearance="fill">
                 <mat-label>Select category</mat-label>
-                <mat-select required formControlName="category">
+                <mat-select [(ngModel)]="character.category" required formControlName="category">
                   <mat-option value="Jedi">Jedi</mat-option>
                   <mat-option value="Sith">Sith</mat-option>
                 </mat-select>
@@ -42,7 +43,7 @@
               <h5 class="card-title">Lightsaber Color</h5>
               <mat-form-field appearance="fill">
                 <mat-label>Select lightsaber color</mat-label>
-                <mat-select required formControlName="lightsaberColor">
+                <mat-select [(ngModel)]="character.lightsaberColor" required formControlName="lightsaberColor">
                   <mat-option value="blue">Blue</mat-option>
                   <mat-option value="green">Green</mat-option>
                   <mat-option value="red">Red</mat-option>
@@ -55,14 +56,14 @@
               <h5 class="card-title">Species</h5>
               <mat-form-field appearance="fill">
                 <mat-label>Species</mat-label>
-                <input required matInput formControlName="species" />
+                <input [(ngModel)]="character.species" required matInput formControlName="species" />
               </mat-form-field> 
             </div>
             <div class="form-group">
               <h5 class="card-title">Gender</h5>
               <mat-form-field appearance="fill">
                 <mat-label>Gender</mat-label>
-                <mat-select required formControlName="gender">
+                <mat-select [(ngModel)]="character.gender" required formControlName="gender">
                   <mat-option value="male">Male</mat-option>
                   <mat-option value="female">Female</mat-option>
                 </mat-select>
@@ -72,33 +73,33 @@
               <h5 class="card-title">Height (in cm)</h5>
               <mat-form-field appearance="fill">
                 <mat-label>Height</mat-label>
-                <input required matInput formControlName="height" />
+                <input [(ngModel)]="character.height" required matInput formControlName="height" />
               </mat-form-field> 
             </div>
             <div class="form-group">
               <h5 class="card-title">Weight (in pounds)</h5>
               <mat-form-field appearance="fill">
                 <mat-label>Weight</mat-label>
-                <input required matInput formControlName="weight" />
+                <input [(ngModel)]="character.weight" required matInput formControlName="weight" />
               </mat-form-field> 
             </div>
             <div class="form-group">
               <h5 class="card-title">Description</h5>
               <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
-                <input required matInput formControlName="description" />
+                <input [(ngModel)]="character.description" required matInput formControlName="description" />
               </mat-form-field> 
             </div>
             <div class="form-group">
               <h5 class="card-title">URL Image</h5>
               <mat-form-field appearance="fill">
                 <mat-label>URL Image</mat-label>
-                <input required matInput formControlName="image" />
+                <input [(ngModel)]="character.img" required matInput formControlName="img" />
               </mat-form-field> 
             </div>
             <div class="btn-toolbar">
               <button type="submit" [disabled]="!characterForm.valid" class="btn btn-primary">
-                Crear
+                Save
               </button>
             </div>
           </form>

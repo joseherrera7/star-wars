@@ -11,7 +11,7 @@ import { RecoverPasswordComponent } from './recover-password/recover-password.co
 import { CreateComponent } from './create/create.component';
 import { DetailComponent } from './detail/detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModifyComponent } from './modify/modify.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { ModifyComponent } from './modify/modify.component';
     RecoverPasswordComponent,
     CreateComponent,
     DetailComponent,
-    ModifyComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

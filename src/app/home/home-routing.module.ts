@@ -1,4 +1,3 @@
-import { ModifyComponent } from './../modify/modify.component';
 import { DetailComponent } from './../detail/detail.component';
 import { CreateComponent } from './../create/create.component';
 import { NgModule } from '@angular/core';
@@ -17,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'modify',
-    component: ModifyComponent,
+    component: CreateComponent,
   }
 ];
 

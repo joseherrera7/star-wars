@@ -1,6 +1,6 @@
 import { Character } from './../home/home.component';
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,7 +12,7 @@ export class DetailComponent implements OnInit {
   character: Character;
   characters: Character[];
 
-  constructor(public router: Router) {
+  constructor(public router: Router, private route: ActivatedRoute,) {
     if (this.router.getCurrentNavigation().extras.state) {
       this.character = this.router.getCurrentNavigation().extras.state.character;
     }
@@ -38,7 +38,9 @@ export class DetailComponent implements OnInit {
       .then((result) => {
         if (result.value) {
           const eliminado = this.characters.splice(
-            this.characters.indexOf(this.character),
+            this.characters.findIndex((character: Character) => {
+              return character.id === this.character.id;
+            }),
             1
           );
           localStorage.setItem('characters', JSON.stringify(this.characters));

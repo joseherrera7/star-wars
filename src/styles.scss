@@ -35,8 +35,6 @@ $candy-app-theme: mat-dark-theme((
 // that you are using.
 @include angular-material-theme($candy-app-theme);
 
-@import '~@sweetalert2/theme-material-ui/material-ui.scss';
-
 mat-icon {
   color: #007bff !important;
 }
