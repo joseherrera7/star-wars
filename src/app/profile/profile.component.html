@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<mat-toolbar class="navbar">
+  <div text-wrap>Star Wars</div>
+  <button mat-icon-button (click)="navigateHome()">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button mat-icon-button (click)="navigateProfile()">
+    <mat-icon>person</mat-icon>
+  </button>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container-sm">
+  <div
+    class="row justify-content-center align-items-center"
+    style="height: 100vh"
+  >
+    <div class="col-12">
+      <div class="card bg-secondary">
+        <div class="card-body">Aqui iria el perfil</div>
+      </div>
+    </div>
+  </div>
+</div>

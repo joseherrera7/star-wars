@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }
+
+  logout(): void {
+    this.router.navigate(['login']);
+  }
+
+  navigateHome(): void {
+    this.router.navigate(['home']);
+  }
+
+  navigateProfile(): void {}
+
 
 }
