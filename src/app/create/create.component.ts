@@ -27,7 +27,7 @@ export class CreateComponent implements OnInit {
   itsModify = false;
   characters: Character[];
   character: Character = {
-    id: null,
+    _id: null,
     name: null,
     category: null,
     lightsaberColor: null,
@@ -69,7 +69,7 @@ export class CreateComponent implements OnInit {
     if (this.itsModify) {
       this.characters[
         this.characters.findIndex((character: Character) => {
-          return character.id === this.character.id;
+          return character._id === this.character._id;
         })
       ] = this.character;
       localStorage.setItem('characters', JSON.stringify(this.characters));
@@ -78,7 +78,7 @@ export class CreateComponent implements OnInit {
       console.log(this.characters);
     } else {
       this.characterForm.value.id =
-        this.characters[this.characters.length - 1].id + 1;
+        this.characters[this.characters.length - 1]._id + 1;
       this.character = this.characterForm.value;
       this.characters.push(this.character);
       localStorage.setItem('characters', JSON.stringify(this.characters));

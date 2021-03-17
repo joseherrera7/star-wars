@@ -3,7 +3,7 @@ import { MatGridList } from '@angular/material/grid-list';
 import { NavigationExtras, Router } from '@angular/router';
 
 export interface Character {
-  id: number;
+  _id: number;
   name: string;
   category: string;
   lightsaberColor: string;

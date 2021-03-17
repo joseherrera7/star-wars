@@ -39,7 +39,7 @@ export class DetailComponent implements OnInit {
         if (result.value) {
           const eliminado = this.characters.splice(
             this.characters.findIndex((character: Character) => {
-              return character.id === this.character.id;
+              return character._id === this.character._id;
             }),
             1
           );
