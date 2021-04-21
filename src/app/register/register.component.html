@@ -12,25 +12,21 @@
       </div>
       <div class="card bg-secondary">
         <div class="card-body">
-          <form action="" autocomplete="off">
+          <form [formGroup]="profileForm" (ngSubmit)="create()">
             <h1 class="card-title">Registrar</h1>
             <div class="form-group">
               <h5 class="card-title">Correo:</h5>
-              <input type="text" class="form-control" name="username" />
-            </div>
-            <div class="form-group">
-              <h5 class="card-title">Usuario:</h5>
-              <input type="text" class="form-control" name="username" />
+              <input type="text" class="form-control" required matInput formControlName="correo" />
             </div>
             <div class="form-group">
               <h5 class="card-title">Contraseña:</h5>
-              <input type="password" class="form-control" name="password" />
+              <input type="password" class="form-control" required matInput formControlName="contrasena" />
             </div>
             <div class="form-group">
               <a href="">Recuperar contraseña</a>
             </div>
             <div class="btn-toolbar">
-              <button type="button" (click)="create()" class="btn btn-success">
+              <button type="submit" [disabled]="!profileForm.valid" class="btn btn-success">
                 Crear
               </button>
             </div>

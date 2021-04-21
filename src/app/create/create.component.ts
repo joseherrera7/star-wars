@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CreateComponent implements OnInit {
   characterForm = this.fb.group({
-    id: [''],
+    _id: [''],
     name: ['', Validators.required],
     category: ['', Validators.required],
     lightsaberColor: ['', Validators.required],
