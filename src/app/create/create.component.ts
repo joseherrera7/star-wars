@@ -1,3 +1,4 @@
+import { ApiServiceService } from './../services/api-service.service';
 import { Character } from './../home/home.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -22,6 +23,7 @@ export class CreateComponent implements OnInit {
     weight: ['', Validators.required],
     description: ['', Validators.required],
     img: ['', Validators.required],
+    correo: [''],
   });
 
   itsModify = false;
@@ -37,12 +39,15 @@ export class CreateComponent implements OnInit {
     weight: null,
     description: null,
     img: null,
+    correo: null,
   };
+  correo: string;
 
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
-    public router: Router
+    public router: Router,
+    private api: ApiServiceService
   ) {
     if (!this.router.getCurrentNavigation().extras.state) {
       this.characters = JSON.parse(localStorage.getItem('characters'));
@@ -51,9 +56,12 @@ export class CreateComponent implements OnInit {
       this.character = this.router.getCurrentNavigation().extras.state.character;
       this.itsModify = true;
     }
+    console.log(this.itsModify);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.correo = sessionStorage.getItem('correo');
+  }
 
   logout(): void {
     this.router.navigate(['login']);
@@ -67,24 +75,19 @@ export class CreateComponent implements OnInit {
 
   save(): void {
     if (this.itsModify) {
-      this.characters[
-        this.characters.findIndex((character: Character) => {
-          return character._id === this.character._id;
-        })
-      ] = this.character;
-      localStorage.setItem('characters', JSON.stringify(this.characters));
-      Swal.fire('Card modified');
-      this.router.navigate(['home']);
-      console.log(this.characters);
+      this.api.modifyCard(this.character, this.character._id).subscribe(() => {
+        Swal.fire('Card modified');
+        this.router.navigate(['home']);
+        console.log(this.characters);
+      });
     } else {
-      this.characterForm.value.id =
-        this.characters[this.characters.length - 1]._id + 1;
+      this.characterForm.value.correo = this.correo;
       this.character = this.characterForm.value;
-      this.characters.push(this.character);
-      localStorage.setItem('characters', JSON.stringify(this.characters));
-      Swal.fire('Card created');
-      this.router.navigate(['home']);
-      console.log(this.characters);
+      this.api.createCard(this.character).subscribe(() => {
+        Swal.fire('Card created');
+        this.router.navigate(['home']);
+        console.log(this.characters);
+      });
     }
   }
 }

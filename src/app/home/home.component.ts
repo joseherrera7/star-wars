@@ -1,3 +1,4 @@
+import { ApiServiceService } from './../services/api-service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatGridList } from '@angular/material/grid-list';
 import { NavigationExtras, Router } from '@angular/router';
@@ -13,6 +14,7 @@ export interface Character {
   weight: number;
   description: string;
   img: string;
+  correo: string
 }
 
 @Component({
@@ -34,11 +36,15 @@ export class HomeComponent implements OnInit {
   characters: Character[];
   breakpoint: number;
 
-  constructor(public router: Router) {
+  constructor(public router: Router, private api: ApiServiceService) {
   }
 
   ngOnInit(): void {
-    this.characters = JSON.parse(localStorage.getItem('characters'));
+    let correo = sessionStorage.getItem('correo');
+    this.api.getCards(correo).subscribe(res => {
+      this.characters = res;
+      localStorage.setItem('characters', JSON.stringify(this.characters))
+    });
   }
 
   logout(): void {

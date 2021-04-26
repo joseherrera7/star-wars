@@ -1,4 +1,5 @@
 export interface JwtResponse {
-    mensaje: string; 
-    Token: string;
+    auth: string; 
+    token: string;
+    correo: string;
 }

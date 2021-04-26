@@ -1,3 +1,4 @@
+import { ApiServiceService } from './../services/api-service.service';
 import { Character } from './../home/home.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
@@ -12,7 +13,7 @@ export class DetailComponent implements OnInit {
   character: Character;
   characters: Character[];
 
-  constructor(public router: Router, private route: ActivatedRoute,) {
+  constructor(public router: Router, private api: ApiServiceService,) {
     if (this.router.getCurrentNavigation().extras.state) {
       this.character = this.router.getCurrentNavigation().extras.state.character;
     }
@@ -37,16 +38,12 @@ export class DetailComponent implements OnInit {
     })
       .then((result) => {
         if (result.value) {
-          const eliminado = this.characters.splice(
-            this.characters.findIndex((character: Character) => {
-              return character._id === this.character._id;
-            }),
-            1
-          );
-          localStorage.setItem('characters', JSON.stringify(this.characters));
-          console.log(eliminado);
-          Swal.fire('Deleted!', 'Your card has been deleted.', 'success');
-          this.router.navigate(['home']);
+          this.api.deleteCard(this.character._id).subscribe((res) => {
+            console.log(res)
+            Swal.fire('Deleted!', 'Your card has been deleted.', 'success');
+            this.router.navigate(['home']);
+          });
+         
           // For more information about handling dismissals please visit
           // https://sweetalert2.github.io/#handling-dismissals
         } else if (result.dismiss === Swal.DismissReason.cancel) {
