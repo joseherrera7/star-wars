@@ -1,10 +1,11 @@
+import { AuthService } from './../services/auth/auth.service';
 import { ApiServiceService } from './../services/api-service.service';
 import { Character } from './../home/home.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -47,7 +48,9 @@ export class CreateComponent implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog,
     public router: Router,
-    private api: ApiServiceService
+    private api: ApiServiceService,
+    private authservice: AuthService,
+    private route: ActivatedRoute
   ) {
     if (!this.router.getCurrentNavigation().extras.state) {
       this.characters = JSON.parse(localStorage.getItem('characters'));
@@ -64,14 +67,16 @@ export class CreateComponent implements OnInit {
   }
 
   logout(): void {
-    this.router.navigate(['login']);
+    this.authservice.logout();
   }
 
   navigateHome(): void {
     this.router.navigate(['home']);
   }
 
-  navigateProfile(): void {}
+  navigateProfile(): void {
+    this.router.navigate(['../profile'], { relativeTo: this.route });
+  }
 
   save(): void {
     if (this.itsModify) {

@@ -52,7 +52,9 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('correo');
+    sessionStorage.removeItem('auth');
+    sessionStorage.removeItem('token');
     this._router.navigate(['/login'])
   }
 }

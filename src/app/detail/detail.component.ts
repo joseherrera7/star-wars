@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth/auth.service';
 import { ApiServiceService } from './../services/api-service.service';
 import { Character } from './../home/home.component';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,12 @@ export class DetailComponent implements OnInit {
   character: Character;
   characters: Character[];
 
-  constructor(public router: Router, private api: ApiServiceService,) {
+  constructor(
+    public router: Router,
+    private api: ApiServiceService,
+    private authservice: AuthService,
+    private route: ActivatedRoute
+  ) {
     if (this.router.getCurrentNavigation().extras.state) {
       this.character = this.router.getCurrentNavigation().extras.state.character;
     }
@@ -24,7 +30,7 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {}
 
   logout(): void {
-    this.router.navigate(['login']);
+    this.authservice.logout();
   }
 
   deleteItem(): void {
@@ -39,11 +45,11 @@ export class DetailComponent implements OnInit {
       .then((result) => {
         if (result.value) {
           this.api.deleteCard(this.character._id).subscribe((res) => {
-            console.log(res)
+            console.log(res);
             Swal.fire('Deleted!', 'Your card has been deleted.', 'success');
             this.router.navigate(['home']);
           });
-         
+
           // For more information about handling dismissals please visit
           // https://sweetalert2.github.io/#handling-dismissals
         } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -66,5 +72,7 @@ export class DetailComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
-  navigateProfile(): void {}
+  navigateProfile(): void {
+    this.router.navigate(['../profile'], { relativeTo: this.route });
+  }
 }

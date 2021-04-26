@@ -1,7 +1,8 @@
+import { AuthService } from './../services/auth/auth.service';
 import { ApiServiceService } from './../services/api-service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatGridList } from '@angular/material/grid-list';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 export interface Character {
   _id: number;
@@ -14,7 +15,7 @@ export interface Character {
   weight: number;
   description: string;
   img: string;
-  correo: string
+  correo: string;
 }
 
 @Component({
@@ -36,26 +37,32 @@ export class HomeComponent implements OnInit {
   characters: Character[];
   breakpoint: number;
 
-  constructor(public router: Router, private api: ApiServiceService) {
-  }
+  constructor(
+    public router: Router,
+    private api: ApiServiceService,
+    private authservice: AuthService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     let correo = sessionStorage.getItem('correo');
-    this.api.getCards(correo).subscribe(res => {
+    this.api.getCards(correo).subscribe((res) => {
       this.characters = res;
-      localStorage.setItem('characters', JSON.stringify(this.characters))
+      localStorage.setItem('characters', JSON.stringify(this.characters));
     });
   }
 
   logout(): void {
-    this.router.navigate(['login']);
+    this.authservice.logout();
   }
 
   navigateHome(): void {
     this.router.navigate(['home']);
   }
 
-  navigateProfile(): void {}
+  navigateProfile(): void {
+    this.router.navigate(['profile'], { relativeTo: this.route });
+  }
 
   goDetail(character): void {
     const navext: NavigationExtras = {
