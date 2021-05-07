@@ -47,18 +47,18 @@
       <button mat-button (click)="goEdit(character)"><mat-icon>mode_edit</mat-icon></button>
       <button mat-button (click)="deleteItem()"><mat-icon>delete</mat-icon></button>
     </mat-card-actions>
-    <mat-card-content>
+    <mat-card-content class="content-card">
       <div class="row">
-        <div class="col">Category: {{ character.category }}</div>
-        <div class="col">Lightsaber Color: {{ character.lightsaberColor }}</div>
+        <div class="col col-category">Category: {{ character.category }}</div>
+        <div class="col col-lightsaber">Lightsaber Color: {{ character.lightsaberColor }}</div>
       </div>
       <div class="row">
-        <div class="col">Species: {{ character.species }}</div>
-        <div class="col">Gender: {{ character.gender }}</div>
+        <div class="col col-species">Species: {{ character.species }}</div>
+        <div class="col col-gender">Gender: {{ character.gender }}</div>
       </div>
       <div class="row">
-        <div class="col">Weight: {{ character.weight }} pounds</div>
-        <div class="col">Height: {{ character.height }} cms</div>
+        <div class="col col-weight">Weight: {{ character.weight }} pounds</div>
+        <div class="col col-height">Height: {{ character.height }} cms</div>
       </div>
     </mat-card-content>
   </mat-card>
